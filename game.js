@@ -47,14 +47,12 @@ MainApp.routes = {
   'home': {
     'render': function () {
       console.log('>>>> Home')
-      document.getElementById('playerName')
-      .addEventListener('submit', saveName)
-      console.log(playerName)
     }
   },
   'game': {
     'render': function () {
       console.log('>>>> App')
+      document.getElementById("nameUndefined").innerHTML = ""
       document.getElementById("startGame")
       .addEventListener('click', startGame)
       document.getElementById("endGame")
@@ -178,6 +176,7 @@ TYPER.prototype = {
         }
       } else {
         this.word.Gameover()
+        endGame()
       }
     }
   }
@@ -205,10 +204,10 @@ Word.prototype = {
     this.ctx.font = '50px Courier'
     this.ctx.fillText("Guessed words: ", 30, 70)
     this.ctx.fillText(guessedWords, 450, 70)
-    this.ctx.fillText("Score: ", 30, 100)
-    this.ctx.fillText(score, 200, 100)
-    this.ctx.fillText("mistakes: ", 30, 130)
-    this.ctx.fillText(mistakes, 290, 130)
+    this.ctx.fillText("Score: ", 30, 105)
+    this.ctx.fillText(score, 200, 105)
+    this.ctx.fillText("mistakes: ", 30, 140)
+    this.ctx.fillText(mistakes, 290, 140)
   },
 
   Gameover: function () {
@@ -239,19 +238,32 @@ function structureArrayByWordLength (words) {
 }
 
 function startGame () {
-  const typer = new TYPER()
-  window.typer = typer
+  if (playerName == undefined){
+    document.getElementById("nameUndefined").innerHTML = "Go to the first page and enter your name to play the game!"
+  } else {
+    //document.getElementById("nameUndefined").innerHTML = ""
+    const typer = new TYPER()
+    window.typer = typer
+  }
 }
+  
 
 //https://medium.com/codingthesmartway-com-blog/pure-javascript-building-a-real-world-application-from-scratch-5213591cfcd6
 function endGame () {
   console.log("Game Over!")
-  let nameScore = {
+  let tulemus = {
     name: playerName,
-    playerScore: score
+    Score: score
   }
-
-  localStorage.setItem('tulemus:', JSON.stringify(nameScore))
+  if (localStorage.getItem('tulemus') === null) {
+    let tulemused = [];
+    tulemused.push(tulemus);
+    localStorage.setItem('tulemused', JSON.stringify(tulemused));
+  } else {
+    let tulemused = JSON.parse(localStorage.getItem('tulemus'));
+    tulemused.push(tulemus);
+    localStorage.setItem('tulemused', JSON.stringify(tulemused));
+  }
 }
 
 function saveName () {

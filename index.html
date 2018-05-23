@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>typer</title>
-    <script src="main.js" charset="utf-8"></script>
+    <script src="game.js" charset="utf-8"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -21,24 +21,30 @@
       <!--score page -->
       <section id="scores">
         <h1>This is the Score page</h1>
+        <div id=scoreList></div>
       </section>
 
   
       <!-- Game page -->
       <section id="game">
         <div id="gameButtons">
-          <button id="startGame">Play</button>
-          <button id="endGame">End Game!</button>
+          <button class="button-item" id="startGame">Play</button>
+          <button class="button-item" button id="endGame"><a href="#scores" class="menu-link scores">End Game!</a></button>
         </div>
+        <div id="nameUndefined"></div>
         <canvas></canvas>
       </section>
   
       <!-- Home -->
       <section id="home">
-          <h1>Avaleht</h1>
-          <p>Welcome to homepage!</p>
-          <input id="playerName" type="text"><br>
-          <a href="#game" class="menu-link game"><button class="menu-item" type="submit">Play!</button></a>
+          <h1>Hyper Typer!</h1>
+          <h2>About the game:</h2><br>
+              <li class="description-item">Game page will display words and your goal is to type the words as fast as you can</li>
+              <li class="description-item">Be aware of typos as the game keeps score and 5 mistakes will end the game</li>
+              <li class="description-item">When you are finished playing press 'End Game!' button which will take you to the page where you can see highscores</li>
+              <li class="description-item">Enter your name and press Play to get to the game page!</li>
+          <input class="input-item" id="playerName" type="text"><br>
+          <button class="button-item" type="submit" onclick="saveName()"><a href="#game" class="menu-link game">Play!</a></button>
       </section>
   
   </main>
