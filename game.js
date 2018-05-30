@@ -155,8 +155,21 @@ TYPER.prototype = {
 
     if (letter === this.word.left.charAt(0)) {
       this.word.removeFirstLetter()
-      this.score += 5
-      console.log (this.score)
+	  if (this.streak < 10){
+		this.score += 5
+	  }
+	  if (this.steak > 10 && this.steak < 20){	
+		this.score += 10
+	  }
+	  if (this.steak > 20 && this.steak < 50){	
+		this.score += 25
+	  }
+	  if (this.steak > 50 && this.steak < 10000000){	
+		this.score += 100
+	  }
+	console.log (this.score)
+	this.streak += 1
+	  
 
       if (this.word.left.length === 0) {
         this.guessedWords += 1
@@ -167,6 +180,7 @@ TYPER.prototype = {
       this.word.Draw()
       this.word.Result()
     } else{
+	  this.streak = 0	
       if(this.mistakes < 10){
         this.mistakes += 1
         if(this.score >= 50) {
