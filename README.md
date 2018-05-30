@@ -33,3 +33,7 @@ Mängu eesmärk on võimalikult kiiresti ekraanile tekkivaid sõnu ära trükkid
 * Ajal põhinevad sündmused [JavaScript Timing Events](http://www.w3schools.com/js/js_timing.asp)
 * Canvas retina ekraani jaoks [High DPI Canvas](https://www.html5rocks.com/en/tutorials/canvas/hidpi/)
 * Mäng 60fps [requestAnimationFrame](http://creativejs.com/resources/requestanimationframe/) ja näide 60fps töötavast mängust [Typer60fps](eesrakenduste-arendamine-2017k/https://github.com/eesrakenduste-arendamine-2017k/Typer60fps) 
+
+## Autorid:
+Sten Piirsalu,
+Kairo Pettai,

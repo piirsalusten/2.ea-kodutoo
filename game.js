@@ -4,6 +4,7 @@ let score = 0
 let mistakes = 0
 const MAXMISTAKES = 10
 let playerName
+let playerId
 
 /* ONE PAGE APPLICATION */
 const MainApp = function () {
@@ -251,11 +252,69 @@ function startGame () {
 //https://medium.com/codingthesmartway-com-blog/pure-javascript-building-a-real-world-application-from-scratch-5213591cfcd6
 function endGame () {
   console.log("Game Over!")
-  let tulemus = {
+  playerScore = score
+
+  let result = {
+    name: playerName,
+    score: playerScore
+  }
+
+  let emptyValueFound = true
+  let storageNr = 1
+
+  while (emptyValueFound === true){
+    emptyValueFound = false
+    let valueLookedFor = "result" + storageNr
+    if (localStorage.getItem(valueLookedFor) !== null){
+      storageNr += 1
+      emptyValueFound = true
+    }
+    if (localStorage.getItem(valueLookedFor) === null){
+      localStorage.setItem(JSON.stringify("result" + storageNr), JSON.stringify(result))
+      emptyValueFound = false
+    }
+}
+
+ /*for (i=1; i<11; i++){
+    if (JSON.parse(localStorage.getItem(i)) ===  null){
+      localStorage.setItem(JSON.stringify(i), JSON.stringify(emptyResult))
+    } 
+    if (JSON.parse(localStorage.getItem(i)) !== null ){
+      let localResult = JSON.parse(localStorage.getItem(i))
+      if (parseInt(localResult.score) < parseInt(result.score)){
+        localStorage.setItem(JSON.stringify(i), JSON.stringify(result))
+      }
+      else{
+        console.log("tulemus oli väiksem")
+      }
+    }*/
+
+
+  /*if (localStorage.getItem("result")=== null){
+    names.push(name)
+    scores.push(localScore)
+    localStorage.setItem("names:", JSON.stringify(names))
+    localStorage.setItem("scores:", JSON.stringify(scores))
+  } else {
+    scores = localStorage.getItem("scores:")
+    names = localStorage.getItem("names:")
+    console.log(names)
+    names.push(name)
+    scores.push(localScore)
+    localStorage.setItem("names:", JSON.stringify(names))
+    localStorage.setItem("scores:", JSON.stringify(scores))
+  }*/
+  
+  /*let result = {
+    id: playerId,
     name: playerName,
     Score: score
   }
-  if (localStorage.getItem('tulemus') === null) {
+  tulemused.push(result)
+  localStorage.setItem("tulemused", JSON.stringify(results))
+
+
+  /*if (localStorage.getItem('tulemused') === null) {
     let tulemused = [];
     tulemused.push(tulemus);
     localStorage.setItem('tulemused', JSON.stringify(tulemused));
@@ -263,7 +322,8 @@ function endGame () {
     let tulemused = JSON.parse(localStorage.getItem('tulemus'));
     tulemused.push(tulemus);
     localStorage.setItem('tulemused', JSON.stringify(tulemused));
-  }
+  }*/
+
 }
 
 function saveName () {
@@ -274,4 +334,7 @@ function saveName () {
 window.onload = function () {
   const mainapp = new MainApp()
   window.mainapp = mainapp
+
+  document.getElementById("submit")
+  .addEventListener('click', saveName)
 }
