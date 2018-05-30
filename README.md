@@ -37,3 +37,16 @@ Mängu eesmärk on võimalikult kiiresti ekraanile tekkivaid sõnu ära trükkid
 ## Autorid:
 Sten Piirsalu,
 Kairo Pettai,
+Oleksii Inno
+
+## Funktsionaalsus:
+1. Esimesel lehel saab sisestada nime ja nupu "play" vajutamisel laeb peale teise lehe, kus on typer.
+2. On menüü riba, mille kaudu saab lehtede vahel liikuda
+2. Teisel lehel, kus asub canvase typer on 2 nuppu: "Play" ja "End game"
+3. Play nupuga saab mängu panna tööle ainult juhul, kui esimesel lehel on sisestatud mängija nimi
+4. Skoor sõltub õigesti vajutatud tähtedest.
+5. Mida rohkem tähti on järiestikku õigesti sisestatud, seda rohkem punkte tähe eest saab
+6. Viie vea puhul prindib canvasele Kirja Game Over!
+7. Nupu "End game!" vajutamisel laeb mängija tulemuse localStoragei ja viib mängija scorei lehele(kus hetkel scoreid puuduvad)
+
+
