@@ -4,7 +4,9 @@ let score = 0
 let mistakes = 0
 const MAXMISTAKES = 10
 let playerName
-let playerId
+let streak = 0
+let localStorageString = "localStorages"
+let localStorages = 1
 
 /* ONE PAGE APPLICATION */
 const MainApp = function () {
@@ -38,6 +40,7 @@ const TYPER = function () {
 
   this.score = 0
   this.mistakes = 0
+  this.streak = 0
 
   this.init()
 }
@@ -148,28 +151,29 @@ TYPER.prototype = {
     score = this.score
     mistakes = this.mistakes
     guessedWords = this.guessedWords
+    streak = this.streak
   },
 
   keyPressed: function (event) {
     const letter = String.fromCharCode(event.which)
 
     if (letter === this.word.left.charAt(0)) {
+      this.streak += 1
       this.word.removeFirstLetter()
-	  if (this.streak < 10){
-		this.score += 5
-	  }
-	  if (this.steak > 10 && this.steak < 20){	
-		this.score += 10
-	  }
-	  if (this.steak > 20 && this.steak < 50){	
-		this.score += 25
-	  }
-	  if (this.steak > 50 && this.steak < 10000000){	
-		this.score += 100
-	  }
-	console.log (this.score)
-	this.streak += 1
-	  
+	    if (this.streak < 10){
+		    this.score += 5
+	    }
+	    if (this.streak > 10 && this.streak < 20){	
+	    	this.score += 10
+	    }
+	    if (this.streak > 20 && this.streak < 50){	
+		    this.score += 25
+	    }
+	    if (this.streak > 500){	
+		    this.score += 100
+	    }
+    	console.log (this.score)
+	    
 
       if (this.word.left.length === 0) {
         this.guessedWords += 1
@@ -180,14 +184,14 @@ TYPER.prototype = {
       this.word.Draw()
       this.word.Result()
     } else{
-	  this.streak = 0	
-      if(this.mistakes < 10){
+	    this.streak = 0	
+      if(this.mistakes < 5){
         this.mistakes += 1
-        if(this.score >= 50) {
-          this.score -= 50
-        }
-        if (this.score < 50){
+        if(this.score = 0) {
           this.score = 0
+        }
+        if (this.score > 0){
+          this.score = this.score * 0.7
         }
       } else {
         this.word.Gameover()
@@ -273,71 +277,37 @@ function endGame () {
     score: playerScore
   }
 
-  let emptyValueFound = true
+  /*if (localStorage.getItem(localStorageString) !== null){*
+   
+  }*/
+  
+  if (localStorage.getItem(localStorageString) !== undefined){
+    console.log("ei olnud null")
+    localStorages = JSON.parse(localStorage.getItem(localStorageString))
+    localStorages += 1
+    localStorage.setItem(JSON.stringify(localStorages), JSON.stringify(result))
+  }
+  if (localStorage.getItem(localStorageString) === undefined){
+    console.log("oli null")
+    localStorage.setItem(JSON.stringify(localStorageString), JSON.stringify(localStorages))
+    localStorage.setItem(JSON.stringify(localStorages), JSON.stringify(result))
+  }
+  
+  /*let emptyValueFound = true
   let storageNr = 1
 
   while (emptyValueFound === true){
     emptyValueFound = false
     let valueLookedFor = "result" + storageNr
+    storageNr += 1
     if (localStorage.getItem(valueLookedFor) !== null){
-      storageNr += 1
       emptyValueFound = true
     }
     if (localStorage.getItem(valueLookedFor) === null){
       localStorage.setItem(JSON.stringify("result" + storageNr), JSON.stringify(result))
       emptyValueFound = false
     }
-}
-
- /*for (i=1; i<11; i++){
-    if (JSON.parse(localStorage.getItem(i)) ===  null){
-      localStorage.setItem(JSON.stringify(i), JSON.stringify(emptyResult))
-    } 
-    if (JSON.parse(localStorage.getItem(i)) !== null ){
-      let localResult = JSON.parse(localStorage.getItem(i))
-      if (parseInt(localResult.score) < parseInt(result.score)){
-        localStorage.setItem(JSON.stringify(i), JSON.stringify(result))
-      }
-      else{
-        console.log("tulemus oli väiksem")
-      }
-    }*/
-
-
-  /*if (localStorage.getItem("result")=== null){
-    names.push(name)
-    scores.push(localScore)
-    localStorage.setItem("names:", JSON.stringify(names))
-    localStorage.setItem("scores:", JSON.stringify(scores))
-  } else {
-    scores = localStorage.getItem("scores:")
-    names = localStorage.getItem("names:")
-    console.log(names)
-    names.push(name)
-    scores.push(localScore)
-    localStorage.setItem("names:", JSON.stringify(names))
-    localStorage.setItem("scores:", JSON.stringify(scores))
-  }*/
-  
-  /*let result = {
-    id: playerId,
-    name: playerName,
-    Score: score
-  }
-  tulemused.push(result)
-  localStorage.setItem("tulemused", JSON.stringify(results))
-
-
-  /*if (localStorage.getItem('tulemused') === null) {
-    let tulemused = [];
-    tulemused.push(tulemus);
-    localStorage.setItem('tulemused', JSON.stringify(tulemused));
-  } else {
-    let tulemused = JSON.parse(localStorage.getItem('tulemus'));
-    tulemused.push(tulemus);
-    localStorage.setItem('tulemused', JSON.stringify(tulemused));
-  }*/
-
+}*/
 }
 
 function saveName () {
