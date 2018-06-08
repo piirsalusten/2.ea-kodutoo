@@ -49,4 +49,5 @@ Oleksii Inno
 6. Viie vea puhul prindib canvasele Kirja Game Over!
 7. Nupu "End game!" vajutamisel laeb mängija tulemuse localStoragei ja viib mängija scorei lehele(kus hetkel scoreid puuduvad)
 
-
+ühe-lehe-rakenduse stiil on loodud kasutatud hash changei, selle lihtsustamiseks jätsin sisse ka menüü.
+Menüü puhul saab lihtsalt liikuda lehtede vahet aga mängu lehel ei saa mängu tööle panna, kui pole eelnevalt sisestatud esimesel lehel nimi ja vajutatud nuppu mängi, mis omistab nime muutujale, mis ei tohi olla null.

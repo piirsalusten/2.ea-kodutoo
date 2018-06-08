@@ -2,7 +2,6 @@
 let guessedWords = 0
 let score = 0
 let mistakes = 0
-const MAXMISTAKES = 10
 let playerName
 let streak = 0
 let localStorageString = "localStorages"
@@ -278,10 +277,6 @@ function endGame() {
         score: playerScore
     }
 
-    /*if (localStorage.getItem(localStorageString) !== null){*
-
-    }*/
-
     if (localStorage.getItem(localStorageString) !== undefined) {
         console.log("ei olnud null")
         localStorages = JSON.parse(localStorage.getItem(localStorageString))
@@ -293,22 +288,6 @@ function endGame() {
         localStorage.setItem(JSON.stringify(localStorageString), JSON.stringify(localStorages))
         localStorage.setItem(JSON.stringify(localStorages), JSON.stringify(result))
     }
-
-    /*let emptyValueFound = true
-    let storageNr = 1
-
-    while (emptyValueFound === true){
-      emptyValueFound = false
-      let valueLookedFor = "result" + storageNr
-      storageNr += 1
-      if (localStorage.getItem(valueLookedFor) !== null){
-        emptyValueFound = true
-      }
-      if (localStorage.getItem(valueLookedFor) === null){
-        localStorage.setItem(JSON.stringify("result" + storageNr), JSON.stringify(result))
-        emptyValueFound = false
-      }
-  }*/
 }
 
 function saveName() {
