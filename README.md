@@ -51,3 +51,11 @@ Oleksii Inno
 
 ühe-lehe-rakenduse stiil on loodud kasutatud hash changei, selle lihtsustamiseks jätsin sisse ka menüü.
 Menüü puhul saab lihtsalt liikuda lehtede vahet aga mängu lehel ei saa mängu tööle panna, kui pole eelnevalt sisestatud esimesel lehel nimi ja vajutatud nuppu mängi, mis omistab nime muutujale, mis ei tohi olla null.
+
+## Pildid
+Skeem koodi tööst: https://gyazo.com/52ec309ffa539ccc458560d30330c361
+Pildid mängust:
+https://gyazo.com/e1c9942bce0f2531e8f9ad28034989f1
+https://gyazo.com/9a46b9f51d14e1d6e4d07cd81c45a0d6
+https://gyazo.com/176dae775e79e894044b71ad11478aa1
+https://gyazo.com/27c2429c7c7a5870528fc9ae9dac73a6
